@@ -10,14 +10,11 @@ spec:
   replicas: {{ .Values.operator.replicas }}
   selector:
     matchLabels:
-      app.kubernetes.io/name: keycloak-operator
       app.kubernetes.io/version: 22.0.1
     {{- include "keycloak-operator.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/managed-by: quarkus
-        app.kubernetes.io/name: keycloak-operator
         app.kubernetes.io/version: 22.0.1
       {{- include "keycloak-operator.selectorLabels" . | nindent 8 }}
       annotations:
