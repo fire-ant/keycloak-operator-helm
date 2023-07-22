@@ -62,7 +62,7 @@ jobs:
           rm -rf dist
           mkdir dist
           echo ${{ secrets.REGISTRY_TOKEN }} | helm registry login ghcr.io --username ${{ github.repository_owner }} --password-stdin
-          helm package ${{ env.CHARTNAME }} --destination dist
+          helm package chart --destination dist
           helm push dist/${{ env.CHARTNAME }}-*.tgz oci://ghcr.io/fire-ant > .digest
           cat .digest | awk -F "[, ]+" '/Digest/{print $NF}'
           cosign sign ghcr.io/fire-ant/${{ env.CHARTNAME }}@$(cat .digest | awk -F "[, ]+" '/Digest/{print $NF}') --yes
