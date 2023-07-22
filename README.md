@@ -1,3 +1,7 @@
-### Helm Template Repository
+### Keycloak operator
 
-Placeholder for Helm Charts
+A chart to install keycloak operator to be used with Quarkus keycloak. 
+
+see: https://www.keycloak.org/getting-started/getting-started-kube
+
+
