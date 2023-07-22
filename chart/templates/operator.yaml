@@ -9,7 +9,6 @@ metadata:
 spec:
   type: {{ .Values.operator.type }}
   selector:
-    app.kubernetes.io/name: keycloak-operator
     app.kubernetes.io/version: 22.0.1
   {{- include "keycloak-operator.selectorLabels" . | nindent 4 }}
   ports:
