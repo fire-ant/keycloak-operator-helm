@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "keycloak-operator.fullname" . }}-operator-view
+  labels:
+  {{- include "keycloak-operator.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: view
+subjects:
+- kind: ServiceAccount
+  name: '{{ include "keycloak-operator.fullname" . }}-operator'
+  namespace: '{{ .Release.Namespace }}'
