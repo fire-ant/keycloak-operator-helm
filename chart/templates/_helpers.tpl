@@ -35,7 +35,7 @@ Common labels
 */}}
 {{- define "keycloak-operator.labels" -}}
 helm.sh/chart: {{ include "keycloak-operator.chart" . }}
-{{ include "keycloak-operator.selectorLabels" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
